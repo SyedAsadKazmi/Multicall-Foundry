@@ -51,47 +51,47 @@ contract MulticallTest is Test {
 
         batchCalls[0] = Multicall3.Call({
             target: target_A,
-            callData: abi.encodeWithSignature("testCallA(uint256,string,address)", 1, "abc", address(1))
+            callData: abi.encodeWithSignature("callA(uint256,string,address)", 1, "abc", address(1))
         }); // No Error
 
         batchCalls[1] = Multicall3.Call({
             target: target_A,
-            callData: abi.encodeWithSignature("testCallA(uint256,string,address)", 0, "abc", address(1))
+            callData: abi.encodeWithSignature("callA(uint256,string,address)", 0, "abc", address(1))
         }); // Custom Error
 
         batchCalls[2] = Multicall3.Call({
             target: target_A,
-            callData: abi.encodeWithSignature("testCallA_WithRevertString(uint256,string,address)", 0, "abc", address(1))
+            callData: abi.encodeWithSignature("callA_WithRevertString(uint256,string,address)", 0, "abc", address(1))
         }); // Revert String
 
         batchCalls[3] = Multicall3.Call({
             target: target_B,
-            callData: abi.encodeWithSignature("testCallB(uint256,string,address)", 1, "abc", address(1))
+            callData: abi.encodeWithSignature("callB(uint256,string,address)", 1, "abc", address(1))
         }); // No Error
 
         batchCalls[4] = Multicall3.Call({
             target: target_B,
-            callData: abi.encodeWithSignature("testCallB(uint256,string,address)", 1, "", address(1))
+            callData: abi.encodeWithSignature("callB(uint256,string,address)", 1, "", address(1))
         }); // Revert String
 
         batchCalls[5] = Multicall3.Call({
             target: target_B,
-            callData: abi.encodeWithSignature("testCallB_WithRevertString(uint256,string,address)", 1, "", address(1))
+            callData: abi.encodeWithSignature("callB_WithRevertString(uint256,string,address)", 1, "", address(1))
         }); // Revert String
 
         batchCalls[6] = Multicall3.Call({
             target: target_C,
-            callData: abi.encodeWithSignature("testCallC(uint256,string,address)", 1, "abc", address(1))
+            callData: abi.encodeWithSignature("callC(uint256,string,address)", 1, "abc", address(1))
         }); // No Error
 
         batchCalls[7] = Multicall3.Call({
             target: target_C,
-            callData: abi.encodeWithSignature("testCallC(uint256,string,address)", 1, "abc", address(0))
+            callData: abi.encodeWithSignature("callC(uint256,string,address)", 1, "abc", address(0))
         }); // Custom Error
 
         batchCalls[8] = Multicall3.Call({
             target: target_C,
-            callData: abi.encodeWithSignature("testCallC_WithRevertString(uint256,string,address)", 1, "abc", address(0))
+            callData: abi.encodeWithSignature("callC_WithRevertString(uint256,string,address)", 1, "abc", address(0))
         }); // Revert String
 
         result = multicall.tryAggregate(false, batchCalls);

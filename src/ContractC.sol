@@ -8,7 +8,7 @@ contract ContractC {
     string public s_param2;
     address public s_param3;
 
-    function testCallC(uint256 param1, string memory param2, address param3) public returns (bool) {
+    function callC(uint256 param1, string memory param2, address param3) public returns (bool) {
         if (param3 == address(0)) {
             revert ContractC__Param3CannotBeZeroAddress();
         }
@@ -18,7 +18,7 @@ contract ContractC {
         return true;
     }
 
-    function testCallC_WithRevertString(uint256 param1, string memory param2, address param3) public returns (bool) {
+    function callC_WithRevertString(uint256 param1, string memory param2, address param3) public returns (bool) {
         if (param3 == address(0)) {
             revert("ContractC__Param3CannotBeZeroAddress");
         }
